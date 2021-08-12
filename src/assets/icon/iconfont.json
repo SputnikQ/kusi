@@ -1,0 +1,114 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2570060",
+      "name": "评价",
+      "font_class": "pingjia-tianchong",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "2674471",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "5191027",
+      "name": "退货管理",
+      "font_class": "tuihuoguanli",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "6227820",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "6446346",
+      "name": "会员",
+      "font_class": "tianchongxing-",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "8679353",
+      "name": "奖牌",
+      "font_class": "jiangpai",
+      "unicode": "e687",
+      "unicode_decimal": 59015
+    },
+    {
+      "icon_id": "9513946",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "10291983",
+      "name": "待收货",
+      "font_class": "daishouhuo",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "12097611",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "12753674",
+      "name": "相机",
+      "font_class": "xiangji_huaban",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "14666030",
+      "name": "购物袋",
+      "font_class": "gouwudai",
+      "unicode": "e725",
+      "unicode_decimal": 59173
+    },
+    {
+      "icon_id": "15258703",
+      "name": "店铺",
+      "font_class": "dianpu",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "20574624",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "21835183",
+      "name": "会员",
+      "font_class": "huiyuan",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "21865921",
+      "name": "退货",
+      "font_class": "tuihuo",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    }
+  ]
+}
