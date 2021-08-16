@@ -28,4 +28,6 @@ instance.interceptors.response.use(
 );
 export const get = (url, params) => instance.get(url, { params });
 export const post = (url, data) => instance.post(url, data);
+export const del = (url, params) => instance.delete(url, { params });
+export const put = (url, params) => instance.put(url, params);
 export default instance;

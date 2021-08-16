@@ -6,7 +6,11 @@
       </van-swipe-item>
     </van-swipe>
     <van-grid :gutter="8" :border="false">
-      <van-grid-item v-for="(item, index) in classify" :key="index">
+      <van-grid-item
+        v-for="(item, index) in classify"
+        :key="index"
+        :to="item.link"
+      >
         <div
           style="
             width: 65px;
@@ -27,6 +31,7 @@
         v-for="item in products"
         :key="item._id"
         style="height: 250px; margin-bottom: 10px"
+        @click="godetail(item._id)"
       >
         <div style="width: 150px; height: 150px; overflow: hidden">
           <img :src="item.coverImg" alt="" width="150px" />
@@ -74,36 +79,45 @@ export default {
         {
           name: "口红",
           src: "https://img.youpin.mi-img.com/shopmain/bb62db06b4bc33650d59a68ca4b01316.jpg",
+          link: "/home/kh",
         },
         {
           name: "电视",
           src: "https://img.youpin.mi-img.com/shopmain/5700d050997db25ec8433fece151f8fb.jpeg?w=800&h=800",
+          link: "/home/ds",
         },
         {
-          name: "灯具",
+          name: "台灯",
           src: "https://img.youpin.mi-img.com/shopmain/633147d13e40d5f212c9c3d810d3b215.jpg",
+          link: "/home/dj",
         },
         {
           name: "耳机",
           src: "https://img.youpin.mi-img.com/shopmain/50100f8436f2f52f4bc1f3261912ebba.jpg?w=800&h=800",
+          link: "/home/ej",
         },
         {
           name: "智能手表",
           src: "https://img.youpin.mi-img.com/shopmain/5d7d535628297de89405712446af1cc0.jpg",
+          link: "/home/znsb",
         },
         {
           name: "手机",
           src: "https://img.youpin.mi-img.com/shopmain/f7f05ad61b87f9c17c0addd37153f947.jpg?w=800&h=800",
+          link: "/home/ds",
         },
         {
           name: "科技手表",
           src: "https://img.youpin.mi-img.com/shopmain/8acef3696a22ce6d31a3f89ad62c2643.jpg",
+          link: "/home/znsb",
         },
         {
           name: "小米",
           src: "https://img.youpin.mi-img.com/shopmain/0a0374d07ce0d29b8043e1bea35f3fb4.jpg?w=800&h=800",
+          link: "/home/ds",
         },
       ],
+      itemize: "口红",
     };
   },
   computed: {},
@@ -115,11 +129,22 @@ export default {
       console.log(res);
       this.products = res.data.products;
     },
+    godetail(id) {
+      // this.$store.dispatch("goDetail", id);
+      this.$router.push("/detail/" + id);
+    },
   },
   created() {
     this.init();
+    this.$store.state.data = false;
   },
-  mounted() {},
+  mounted() {
+    let a = document.querySelectorAll(".van-grid-item__content--center");
+    a.forEach((v) => {
+      v.style.borderRadius = "10px";
+      v.style.overflow = "hidden";
+    });
+  },
 };
 </script>
 <style scoped>
@@ -134,6 +159,7 @@ img {
   margin: 0 auto;
   border-radius: 10px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .van-swipe-item {
   height: 200px;
@@ -153,6 +179,7 @@ img {
   border: 1px gainsboro solid;
   border-radius: 10px;
   overflow: hidden;
+  background-color: white;
 }
 .waterfall-item p:nth-of-type(1) {
   width: 160px;

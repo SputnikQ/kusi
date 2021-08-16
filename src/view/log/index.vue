@@ -61,7 +61,7 @@ export default {
 </script>
 <style scoped>
 .van-form {
-  margin-top: 200px;
+  margin-top: 188px;
 }
 .van-field {
   background-color: transparent;

@@ -86,6 +86,7 @@ export default {
       this.id = id;
     },
     async getclass() {
+      this.$store.state.data = false;
       const res = await categoriesApi({ name: this.items[this.id].text });
       console.log(this.items[this.id].text);
       console.log(res);
@@ -105,7 +106,7 @@ export default {
         this.$router.push("/home/znsb");
       }
       if (this.id == 5) {
-        this.$router.push("/home");
+        this.$router.push("/home/ds");
       }
     },
   },

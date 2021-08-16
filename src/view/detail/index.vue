@@ -1,6 +1,16 @@
 <template>
   <div class="detail">
-    <div v-if="product">
+    <van-sticky @scroll="sc">
+      <van-nav-bar :title="title" left-arrow ref="stick">
+        <template #left>
+          <p class="iconfont" style="font-size: 26px" @click="back">&#xe606;</p>
+        </template>
+        <template #right>
+          <van-icon name="search" size="24" color="black" />
+        </template>
+      </van-nav-bar>
+    </van-sticky>
+    <div v-if="product" class="contain">
       <img :src="product.coverImg" alt="" />
       <span>￥</span><span>{{ product.price }}</span
       ><span>￥{{ product.price + 500 }}</span> <span>一口价</span
@@ -8,7 +18,6 @@
       <van-cell is-link value-class="ny">
         <p>查看</p>
 
-        <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <van-tag type="danger" color="#ffe9d2">库支票</van-tag>
           <span class="custom-title"
@@ -109,6 +118,7 @@ export default {
         // 数据结构见下方文档
         picture: "",
       },
+      title: "",
     };
   },
   computed: {},
@@ -138,6 +148,22 @@ export default {
         const res = await addToCart(data, 1);
         console.log(res);
       }
+    },
+    sc(obj) {
+      if (obj.isFixed) {
+        this.$store.state.number = this.$store.state.number - 0.02;
+        console.log(this.$refs.stick);
+        this.$refs.stick.$el.style.opacity = `${this.$store.state.number}`;
+        console.log(this.$store.state.number);
+        this.title = "商品";
+      } else if (!obj.isFixed) {
+        this.title = "";
+        this.$refs.stick.$el.style.opacity = "1";
+        this.$store.state.number = 1;
+      }
+    },
+    back() {
+      this.$router.go(-1);
     },
   },
   created() {
@@ -236,5 +262,8 @@ img {
 ul li {
   float: left;
   margin-left: 5px;
+}
+.contain {
+  margin-bottom: 110px;
 }
 </style>

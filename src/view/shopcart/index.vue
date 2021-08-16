@@ -1,5 +1,10 @@
 <template>
   <div class="cart">
+    <van-nav-bar>
+      <template #left>
+        <p class="iconfont" style="font-size: 28px" @click="back">&#xe606;</p>
+      </template>
+    </van-nav-bar>
     <div class="cartlist" v-if="list">
       <div v-for="item in list" :key="item._id">
         <!-- item.checked是自己添加的 -->
@@ -38,13 +43,14 @@ import { Toast } from "vant";
 import { loadCartlist } from "../../api/cart";
 import { addToCart } from "../../api/cart";
 import { delCart } from "../../api/cart";
-import { order } from "../../api/order";
+// import { order } from "../../api/order";
 export default {
   components: {},
   data() {
     return {
       list: [], //接收购物车列表
       // checked: true, //复选框
+      addressMsg: {},
     };
   },
   computed: {
@@ -82,6 +88,7 @@ export default {
             quantity: item.quantity,
             product: item._id,
             price: item.product.price,
+            id: item.product._id,
           };
           arr.push(obj);
         }
@@ -101,15 +108,28 @@ export default {
     },
     //提交订单
     async onSubmit() {
-      //要判断有没有收货人 没有要跳到新增收货人页面
-      console.log(this.selectCart);
-      const res = await order({
-        receiver: "sputnik",
-        regions: "宇宙",
-        address: "地球",
-        orderDetails: this.selectCart,
-      });
-      console.log(res);
+      // //要判断有没有收货人 没有要跳到新增收货人页面
+      // console.log(this.selectCart);
+      // const res = await order({
+      //   receiver: "sputnik",
+      //   regions: "宇宙",
+      //   address: "地球",
+      //   orderDetails: this.selectCart,
+      // });
+      // console.log(res);
+      // this.$router.push("/order");
+      // console.log(this.sumPrice);
+      if (this.sumPrice == 0) {
+        Toast("您还没有选择商品");
+      } else {
+        // this.$router.push("/order");
+        console.log(this.selectCart);
+        this.$store.state.orderCart = this.selectCart;
+        console.log(this.$store.state.orderCart);
+        this.$store.state.total = this.sumPrice;
+        this.$router.push("/order");
+        // console.log(this.list);
+      }
     },
     //删除购物车单个商品信息
     async del(id) {
@@ -121,6 +141,7 @@ export default {
         await this.getCart();
       }
     },
+
     async addProduct(id, num) {
       const res = await addToCart(id, num);
       console.log(res);
@@ -129,6 +150,9 @@ export default {
           item.quantity = item.quantity + num;
         }
       });
+    },
+    back() {
+      this.$router.go(-1);
     },
   },
   created() {

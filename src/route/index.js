@@ -83,6 +83,48 @@ const router = new VueRouter({
         footShow: true,
       },
     },
+    {
+      path: "/register",
+      component: () => import("@/view/register/index"),
+      meta: {
+        footShow: false,
+      },
+    },
+    {
+      path: "/setup",
+      component: () => import("@/view/mine/setup"),
+      meta: {
+        footShow: false,
+      },
+    },
+    {
+      path: "/personinform",
+      component: () => import("@/view/mine/personinform"),
+      meta: {
+        footShow: false,
+      },
+    },
+    {
+      path: "/address",
+      component: () => import("@/view/mine/address"),
+      meta: {
+        footShow: false,
+      },
+    },
+    {
+      path: "/order",
+      component: () => import("@/view/order/index"),
+      meta: {
+        footShow: false,
+      },
+    },
+    {
+      path: "/orderlist",
+      component: () => import("@/view/order/orderlist"),
+      meta: {
+        footShow: false,
+      },
+    },
   ],
 });
 export default router;

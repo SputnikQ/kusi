@@ -31,14 +31,14 @@
         </van-tab>
       </van-tabs>
 
-      <van-swipe :autoplay="3000" v-if="flag == active">
+      <van-swipe :autoplay="3000" v-if="this.$store.state.data == active">
         <van-swipe-item v-for="(image, index) in images" :key="index">
           <img v-lazy="image" />
         </van-swipe-item>
       </van-swipe>
     </div>
 
-    <div class="contain" v-if="flag == active">
+    <div class="contain" v-if="this.$store.state.data == active">
       <van-grid :gutter="8" :border="false">
         <van-grid-item
           v-for="(item, index) in classify"
@@ -62,7 +62,7 @@
       <van-sticky>
         <van-tabs
           v-model="itemize"
-          background="#fca7a2"
+          background="#fbb81b"
           color="transparent"
           @click="getsort(itemize)"
         >
@@ -167,7 +167,7 @@ export default {
         {
           name: "手机",
           src: "https://img.youpin.mi-img.com/shopmain/f7f05ad61b87f9c17c0addd37153f947.jpg?w=800&h=800",
-          link: "/home/sj",
+          link: "/home/ds",
         },
         {
           name: "科技手表",
@@ -180,7 +180,7 @@ export default {
           link: "/home/ds",
         },
       ],
-      flag: "手机",
+      flag: this.$store.state.data,
       itemize: "口红",
     };
   },
@@ -207,6 +207,9 @@ export default {
     async getcategories(name) {
       //
       console.log(name);
+      if (name == "手机") {
+        this.$store.state.data = "手机";
+      }
     },
     async getsort(name) {
       const res = await categoriesApi({ name: name });
@@ -216,6 +219,7 @@ export default {
     },
     goclass(src) {
       this.$router.push(src);
+      this.$store.state.data = false;
     },
     godetail(id) {
       // this.$store.dispatch("goDetail", id);
@@ -224,8 +228,15 @@ export default {
   },
   created() {
     this.init();
+    this.$store.state.data = "手机";
   },
-  mounted() {},
+  mounted() {
+    let a = document.querySelectorAll(".van-grid-item__content--center");
+    a.forEach((v) => {
+      v.style.borderRadius = "10px";
+      v.style.overflow = "hidden";
+    });
+  },
 };
 </script>
 <style scoped>
@@ -234,7 +245,9 @@ export default {
   width: 100%;
 }
 .big {
-  background: url(../../assets/img/pink.jpg) no-repeat;
+  /* background: url(../../assets/img/pink.jpg) no-repeat; */
+  padding-bottom: 20px;
+  background-color: #fbb81b;
   width: 100%;
 }
 .carme {

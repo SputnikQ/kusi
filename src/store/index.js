@@ -4,8 +4,14 @@ import { proDetailApi } from "../api/product";
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
-    data: "",
+    data: "手机",
+    number: 1,
+    addressid: "",
+    defaultAddress: "",
+    orderCart: [],
+    total: "",
   },
+  getters: {},
   mutations: {
     async godetail(state, id) {
       state.data = id;
